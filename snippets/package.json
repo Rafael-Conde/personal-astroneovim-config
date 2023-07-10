@@ -1,0 +1,26 @@
+{
+  "name": "user snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "tex",
+        "path": "./latex.json"
+      },
+      {
+        "language": "cpp",
+        "path": "./cpp.json"
+      },
+      {
+        "language":"ino",
+        "path": "./arduino.json"
+      },
+      {
+        "language":"rust",
+        "path":"./rust.json"
+      }
+    ]
+  }
+}

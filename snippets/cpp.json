@@ -1,0 +1,11 @@
+{
+	"CppGuard": {
+    "prefix": "cppgrd",
+    "body": [
+      "#ifndef $1",
+      "#define $1",
+      "\n#endif // $1"
+    ],
+    "description":"C++ include guards base on the name of the file"
+  }
+}

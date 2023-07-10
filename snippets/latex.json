@@ -1,0 +1,162 @@
+{
+	"Latex begin": 
+	{
+		"prefix": [
+			"ltx_begin",
+			"begin"
+		],
+		"body": [
+			"\\begin{${1:enviroment}}",
+			"${0:body}",
+			"\\end{${1:enviroment}}"
+		],
+		"luasnip": {
+			"priority": 2000,
+			"autotrigger": true
+		},
+		"description": "A simples snippet for the latex \\begin enviroment"
+	},
+	"Latex itemize enviroment": 
+	{
+		"prefix": [
+			"ltx_itemize",
+			"itemize"
+		],
+		"body": [
+			"\\begin{itemize}",
+			"\t\\item{ $0 }",
+			"\\end{itemize}"
+		],
+		"description": "A simples snippet for the latex itemize enviroment enviroment"
+	},
+	"Latex Equation Enviroment": 
+	{
+		"prefix": [
+			"ltx_equation",
+			"equation"
+		],
+		"body": [
+			"\\begin{equation}",
+			"\t\\label{equation - $1}",
+			"\t${0:a^2 = b^2 + c^2}",
+			"\\end{equation}"
+		],
+		"description": "A simples snippet for the latex itemize enviroment enviroment"
+	},
+	"Latex Chapter": 
+	{
+		"prefix": [
+			"ltx_chapter",
+			"chapter"
+		],
+		"body": [
+			"\\chapter{$0}",
+			"\\label{ $0 }"
+		],
+		"description": "A simples snippet to create a chapter with a label"
+	},
+	"Latex Section": 
+	{
+		"prefix": [
+			"ltx_section",
+			"section"
+		],
+		"body": [
+			"\\section{$0}",
+			"\\label{ $0 }"
+		],
+		"description": "A simples snippet to create a section with a label"
+	},
+	"Latex subsection": 
+	{
+		"prefix": [
+			"ltx_subsection",
+			"subsection"
+		],
+		"body": [
+			"\\subsection{$0}",
+			"\\label{ $0 }"
+		],
+		"description": "A simples snippet to create a subsection with a label"
+	},
+	"Latex reference": 
+	{
+		"prefix": [
+			"ltx_ref",
+			"ref"
+		],
+		"body": [
+			"\\ref{$0}"
+		],
+		"description": "A simples snippet to create a reference"
+	},
+	"Latex tabele 2 comentada": 
+	{
+		"prefix": [
+			"ltx_table2_c",
+			"table2_c"
+		],
+		"body": [
+			"\\begin{table}[H]\\centering                          %Centralizando",
+      "\\caption{Essa tabela é nomeada assim}               %Aqui damos o nome da nossa tabela!",
+			"\\label{table - $0}",
+      "\t\\begin{tabular}{ ccc }                        %Começando a tabela. ccc faz com que as celulas fiquem centralizadas, mas pode ser lll ou rrr. Importante que o número de letras aqui deve ser o mesmo número de colunas!",
+      "\t\\hline",
+			"\theader1 & header2 & header3 \\\\\\",
+			"\t\\hline",
+      "\t\\hline                                          %Linha para separar",
+      "\t\toi & essa & é   \\\\ ",
+      "\t\tnossa & ultra & mega   \\\\  ",
+      "\t\ttop & das galáxias & tabela   \\\\",
+      "\t\\hline                                          %Linha para separar",
+      "\t\\end{tabular}",
+			"\t",
+      "\t{\\scriptsize Fonte: Elaborado pelo próprio autor.}                      %Fonte, centralizada, em letra menor!",
+      "\\end{table}"
+		],
+		"description": "A simples snippet pra criar uma tabela do tipo 2 comentada de acordo com o modelo do PET"
+	},
+	"Latex tabele 2": 
+	{
+		"prefix": [
+			"ltx_table2",
+			"table2"
+		],
+		"body": [
+			"\\begin{table}[H]",
+			"\\centering",
+      "\\caption{Essa tabela é nomeada assim}",
+			"\\label{table - $0}",
+      "\t\\begin{tabular}{ ccc }",
+      "\t\\hline",
+			"\theader1 & header2 & header3 \\\\\\",
+			"\t\\hline",
+      "\t\toi & essa & é   \\\\\\",
+      "\t\tnossa & ultra & mega   \\\\\\",
+      "\t\ttop & das galáxias & tabela   \\\\\\ ",
+      "\t\\hline",
+      "\t\\end{tabular}",
+			"\t",
+      "\t{\\scriptsize Fonte: Elaborado pelo próprio autor.}",
+      "\\end{table}"
+		],
+		"description": "A simples snippet pra criar uma tabela do tipo 2 de acordo com o modelo do PET"
+	},
+	"Latex image/figure": 
+	{
+		"prefix": [
+			"ltx_figure",
+			"figure"
+		],
+		"body": [
+			"\\begin{figure}[H]",
+      "\\centering",
+      "\\caption{${1:Título da figura}}",
+      "\\includegraphics[scale = 1.0, angle = 0]{${2:unesp}.png} \\\\\\ ",
+      "{\\scriptsize Fonte: Elaborado pelo próprio autor.}",
+      "\\label{figure - $0}",
+      "\\end{figure}"
+		],
+		"description": "A simples snippet to create a reference"
+	}
+}

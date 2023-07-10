@@ -1,0 +1,20 @@
+{
+  "Print to console": {
+    "prefix": [
+      "ard_boilerplate",
+      "boilerplate"
+    ],
+    "body": [
+      "void setup()",
+      "{",
+      "\t$1",
+      "}",
+      "",
+      "void loop()",
+      "{",
+      "\t$2",
+      "}"
+    ],
+    "description": "arduino boilerplate code"
+  }
+}
