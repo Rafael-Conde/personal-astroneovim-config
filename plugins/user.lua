@@ -9,6 +9,7 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
+    "akinsho/flutter-tools.nvim",
     "lervag/vimtex",
     "ellisonleao/gruvbox.nvim",
     {
