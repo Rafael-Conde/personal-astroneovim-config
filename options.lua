@@ -7,7 +7,7 @@ return {
     shiftwidth = 4,
     so = 3,
     hlsearch = true,
-    guifont = "CaskaydiaMono Nerd Font Mono:h12",
+    guifont = "CaskaydiaCove Nerd Font:h12",
     -- tabstop = 4,
     -- spell = false, -- sets vim.opt.spell
     -- signcolumn = "auto", -- sets vim.opt.signcolumn to auto
