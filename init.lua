@@ -8,6 +8,20 @@ return {
     underline = true,
   },
 
+  lsp = {
+    config = {
+      rust_analyzer = {
+        settings = {
+          ["rust-analyzer"] = {
+            checkOnSave = {
+              command = "clippy",
+            },
+          },
+        },
+      },
+    },
+  },
+
   -- Configure require("lazy").setup() options
   lazy = {
     defaults = { lazy = true },
