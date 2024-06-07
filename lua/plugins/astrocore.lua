@@ -53,8 +53,13 @@ return {
       n = {
         -- second key is the lefthand side of the map
 
-        -- navigate buffer tabs
         ["<F12>"] = { "@a", desc = "executes the macro at a" },
+        ["<leader>a"] = { desc = "QuickFix list" },
+        ["<leader>ac"] = {
+          function() vim.fn.setqflist({}, "r") end,
+          desc = "Clear QuickFix list",
+        },
+        -- navigate buffer tabs
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 
