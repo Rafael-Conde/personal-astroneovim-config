@@ -59,6 +59,70 @@ return {
           function() vim.fn.setqflist({}, "r") end,
           desc = "Clear QuickFix list",
         },
+        ["<leader>ao"] = {
+          function() vim.cmd "copen" end,
+          desc = "Open QuickFix list",
+        },
+        ["<leader>ai"] = {
+          function() vim.cmd "cclose" end,
+          desc = "Closes QuickFix list",
+        },
+        ["<leader>aa"] = {
+          function()
+            -- Get the current buffer number
+            local bufnr = vim.api.nvim_get_current_buf()
+            -- Get the current buffer name
+            local bufname = vim.api.nvim_buf_get_name(bufnr)
+            -- Get the current cursor position
+            local cursor_pos = vim.api.nvim_win_get_cursor(0)
+            local lnum = cursor_pos[1]
+            local col = cursor_pos[2] + 1 -- Neovim returns column starting from 0, adding 1 to make it 1-based
+
+            -- Create the quickfix item
+            local quickfix_item = {
+              filename = bufname,
+              lnum = lnum,
+              col = col,
+              text = "Current position in buffer",
+            }
+
+            -- Append the item to the quickfix list
+            vim.fn.setqflist({}, "a", { items = { quickfix_item } })
+
+            -- Optionally, open the quickfix list window to see the changes
+            vim.cmd "copen"
+          end,
+          desc = "Append current buffer QuickFix list",
+        },
+        ["<leader>ar"] = {
+          function()
+            -- Ensure the cursor is in the quickfix window
+            if vim.fn.getwininfo(vim.fn.win_getid())[1].quickfix == 1 then
+              -- Get the current cursor position in the quickfix window
+              local cursor_pos = vim.fn.getpos "."
+              local current_idx = cursor_pos[2] -- Line number in the quickfix window
+
+              -- Get the current quickfix list
+              local qflist = vim.fn.getqflist()
+
+              -- Check if the current index is within the range of the quickfix list
+              if current_idx >= 1 and current_idx <= #qflist then
+                -- Remove the current quickfix item
+                table.remove(qflist, current_idx)
+                -- Update the quickfix list
+                vim.fn.setqflist(qflist, "r")
+                -- Refresh the quickfix window to reflect changes
+                vim.cmd "copen"
+              else
+                print "Invalid quickfix list index"
+              end
+            else
+              print "Not in the quickfix window"
+            end
+          end,
+          desc = "Remove from QuickFix list",
+        },
+
         -- navigate buffer tabs
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
