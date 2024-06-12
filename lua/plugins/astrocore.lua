@@ -78,12 +78,18 @@ return {
             local lnum = cursor_pos[1]
             local col = cursor_pos[2] + 1 -- Neovim returns column starting from 0, adding 1 to make it 1-based
 
+            -- Prompt the user for a name
+            local name = vim.fn.input "Enter quickfix entry name: "
+
+            -- Use default text if no name is provided
+            if name == "" then name = "Current position in buffer" end
+
             -- Create the quickfix item
             local quickfix_item = {
               filename = bufname,
               lnum = lnum,
               col = col,
-              text = "Current position in buffer",
+              text = name,
             }
 
             -- Append the item to the quickfix list
@@ -92,7 +98,7 @@ return {
             -- Optionally, open the quickfix list window to see the changes
             vim.cmd "copen"
           end,
-          desc = "Append current buffer QuickFix list",
+          desc = "Append current buffer QuickFix list with a name",
         },
         ["<leader>ar"] = {
           function()
