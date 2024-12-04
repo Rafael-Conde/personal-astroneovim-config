@@ -3,11 +3,52 @@
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
 
+-- Table to store marks before deletion
+preserved_marks = {}
+
+-- Function to capture marks before deletion
 ---@type LazySpec
 return {
   "AstroNvim/astrocore",
   ---@type AstroCoreOpts
   opts = {
+    -- autocmds = {
+    --   PreserveMarks = {
+    --     {
+    --       event = { "TextChanged", "TextChangedI" },
+    --       desc = "Restore deleted marks",
+    --       -- Function to restore marks after deletion
+    --       callback = function()
+    --         for mark_name, pos in pairs(preserved_marks) do
+    --           local line = pos.line
+    --           local col = pos.col
+    --
+    --           -- If the line is beyond the last line, move the mark to the last line
+    --           if line > vim.fn.line "$" then
+    --             vim.fn.setpos("'" .. mark_name, { 0, vim.fn.line "$", col, 0 })
+    --           else
+    --             -- Otherwise, keep the mark on the same line number
+    --             vim.fn.setpos("'" .. mark_name, { 0, line, col, 0 })
+    --           end
+    --         end
+    --       end,
+    --     },
+    --     {
+    --       event = "TextChangedPre",
+    --       desc = "Capture the marks before they are deleted",
+    --       -- Function to restore marks after deletion
+    --       callback = function()
+    --         preserved_marks = {}
+    --         local marks = vim.fn.getmarklist()
+    --         for _, mark in ipairs(marks) do
+    --           local mark_name = mark.mark
+    --           local mark_pos = mark.pos
+    --           preserved_marks[mark_name] = { line = mark_pos[2], col = mark_pos[3] }
+    --         end
+    --       end,
+    --     },
+    --   },
+    -- },
     -- Configure core features of AstroNvim
     features = {
       large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
