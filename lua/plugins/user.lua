@@ -118,4 +118,15 @@ return {
     "nvim-neo-tree/neo-tree.nvim",
     opts = function(_, opts) opts.filesystem.filtered_items.visible = true end,
   },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-live-grep-args.nvim",
+    },
+    opts = function(_, opts)
+      local telescope = require "telescope"
+      telescope.load_extension "live_grep_args"
+      return opts
+    end,
+  },
 }

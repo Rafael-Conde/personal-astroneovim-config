@@ -50,6 +50,33 @@ return {
     -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
     mappings = {
       -- first key is the mode
+      v = {
+        ["<leader>gs"] = {
+          function()
+            local live_grep_args_shortcuts = require "telescope-live-grep-args.shortcuts"
+            live_grep_args_shortcuts.grep_visual_selection()
+          end,
+          noremap = true,
+          silent = true,
+          desc = "Goes to the middle of the selection",
+        },
+        ["<leader>m"] = {
+          function()
+            -- Get the start and end lines of the visual selection
+            local start_line = vim.fn.getpos "v"
+            local end_line = vim.fn.getpos "."
+            -- Calculate the middle line, ensuring it's within buffer bounds
+            local middle_line = math.floor((start_line[2] + end_line[2]) / 2)
+            -- Move the cursor to the middle line
+            vim.api.nvim_win_set_cursor(0, { middle_line, 0 })
+            -- Center the screen on the cursor
+            vim.cmd "normal! zz"
+          end,
+          noremap = true,
+          silent = true,
+          desc = "Goes to the middle of the selection",
+        },
+      },
       n = {
         -- second key is the lefthand side of the map
 
