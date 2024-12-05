@@ -12,43 +12,18 @@ return {
   "AstroNvim/astrocore",
   ---@type AstroCoreOpts
   opts = {
-    -- autocmds = {
-    --   PreserveMarks = {
-    --     {
-    --       event = { "TextChanged", "TextChangedI" },
-    --       desc = "Restore deleted marks",
-    --       -- Function to restore marks after deletion
-    --       callback = function()
-    --         for mark_name, pos in pairs(preserved_marks) do
-    --           local line = pos.line
-    --           local col = pos.col
-    --
-    --           -- If the line is beyond the last line, move the mark to the last line
-    --           if line > vim.fn.line "$" then
-    --             vim.fn.setpos("'" .. mark_name, { 0, vim.fn.line "$", col, 0 })
-    --           else
-    --             -- Otherwise, keep the mark on the same line number
-    --             vim.fn.setpos("'" .. mark_name, { 0, line, col, 0 })
-    --           end
-    --         end
-    --       end,
-    --     },
-    --     {
-    --       event = "TextChangedPre",
-    --       desc = "Capture the marks before they are deleted",
-    --       -- Function to restore marks after deletion
-    --       callback = function()
-    --         preserved_marks = {}
-    --         local marks = vim.fn.getmarklist()
-    --         for _, mark in ipairs(marks) do
-    --           local mark_name = mark.mark
-    --           local mark_pos = mark.pos
-    --           preserved_marks[mark_name] = { line = mark_pos[2], col = mark_pos[3] }
-    --         end
-    --       end,
-    --     },
-    --   },
-    -- },
+    autocmds = {
+      cmdWindow = {
+        {
+          event = { "CmdwinEnter" },
+          desc = "sets a remap in the cmdline window so I can quit it with Esc",
+          -- Function to restore marks after deletion
+          callback = function()
+            vim.api.nvim_buf_set_keymap(0, "n", "<Esc>", "<C-w>c", { noremap = true, silent = true })
+          end,
+        },
+      },
+    },
     -- Configure core features of AstroNvim
     features = {
       large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
@@ -121,6 +96,7 @@ return {
       n = {
         -- second key is the lefthand side of the map
 
+        [";"] = { "q:i", desc = "executes the macro at a" },
         ["<F12>"] = { "@a", desc = "executes the macro at a" },
         ["<leader>a"] = { desc = "QuickFix list" },
         ["<leader>ac"] = {
