@@ -82,7 +82,23 @@ return {
       )
     end,
   },
-  "akinsho/flutter-tools.nvim",
+  {
+    "nvim-flutter/flutter-tools.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim", -- optional for vim.ui.select
+    },
+    config = function()
+      local flutter = require "flutter-tools"
+      flutter.setup {
+        debugger = {
+          enabled = true,
+          register_configurations = function(_) require("dap").configurations.dart = {} end,
+        },
+      }
+    end,
+  },
   "lervag/vimtex",
   "ellisonleao/gruvbox.nvim",
   {

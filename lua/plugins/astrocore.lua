@@ -98,6 +98,10 @@ return {
 
         [";"] = { "q:i", desc = "executes the macro at a" },
         ["<F12>"] = { "@a", desc = "executes the macro at a" },
+        -- ["<F11>"] = {
+        --   require("telescope.builtin").live_grep { search_dirs = { vim.fn.expand "%:p" } },
+        --   desc = "greps in the current file only",
+        -- },
         ["<leader>a"] = { desc = "QuickFix list" },
         ["<leader>ac"] = {
           function() vim.fn.setqflist({}, "r") end,
