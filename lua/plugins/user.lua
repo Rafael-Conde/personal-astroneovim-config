@@ -109,7 +109,7 @@ return {
     event = "VeryLazy",
     config = function()
       -- Load treesitter grammar for org
-      require("orgmode").setup_ts_grammar()
+      -- require("orgmode").setup_ts_grammar()
 
       -- Setup treesitter
       require("nvim-treesitter.configs").setup {
@@ -132,6 +132,11 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = function(_, opts) opts.filesystem.filtered_items.visible = true end,
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.8",
+    dependencies = { "nvim-lua/plenary.nvim" },
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
