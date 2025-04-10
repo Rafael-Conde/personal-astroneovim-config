@@ -67,14 +67,14 @@ return {
     mappings = {
       -- first key is the mode
       v = {
-        ["<leader>gs"] = {
+        ["<leader>js"] = {
           function()
             local live_grep_args_shortcuts = require "telescope-live-grep-args.shortcuts"
             live_grep_args_shortcuts.grep_visual_selection()
           end,
           noremap = true,
           silent = true,
-          desc = "Goes to the middle of the selection",
+          desc = "Greps the selection",
         },
         ["<leader>m"] = {
           function()
@@ -103,6 +103,14 @@ return {
         --   desc = "greps in the current file only",
         -- },
         ["<leader>a"] = { desc = "QuickFix list" },
+        ["<leader>an"] = {
+          function() vim.cmd "cnext" end,
+          desc = "Go to the next quickfix item",
+        },
+        ["<leader>ap"] = {
+          function() vim.cmd "cprevious" end,
+          desc = "Go to the previous quickfix item",
+        },
         ["<leader>ac"] = {
           function() vim.fn.setqflist({}, "r") end,
           desc = "Clear QuickFix list",
